@@ -1,0 +1,8 @@
+__adk_agnet_builder_assistant
+__pycahe__
+.adk
+.venv
+.vscode
+*.pyc
+*.ipynb
+agents

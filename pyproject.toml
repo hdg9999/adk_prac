@@ -1,0 +1,14 @@
+[project]
+name = "adk-prac"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-adk[a2a,community,docs,eval,extensions,otel-gcp,test]==1.22.1",
+]
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+]
