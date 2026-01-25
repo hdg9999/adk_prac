@@ -27,6 +27,15 @@ root_agent = LlmAgent(
     # ... other agent parameters
 )
 
+# OpenAI 호환 모드로 서빙되는 모델 - vllm, xinference, LM Studio 등..
+oai_compatible_agent = LlmAgent(
+    # base_url 값으로 서빙되는 url을 넘기면 됨. 보통은 '/v1' 까지 포함해야하는 경우가 많음
+    model=LiteLlm(model="openai/gpt-5-mini-2025-08-07" , base_url="http://<<your_host_url.foo.bar>>/v1"), 
+    name="openai_agent",
+    instruction="You are a helpful assistant powered by GPT-5-mini. You are provided with google_search tool.",
+    tools=[add]
+    # ... other agent parameters
+)
 
 # 앤스로픽 클로드 계열
 agent_claude_direct = LlmAgent(

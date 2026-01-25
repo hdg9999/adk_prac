@@ -3,7 +3,7 @@ from google.adk.models.lite_llm import LiteLlm
 
 # lite llm 래퍼 클래스가 제공됨. lite llm은 여러가지 다양한 플랫폼의 모델을 갈아끼기 쉽게 해주는 플랫폼 프레임워크임.
 # 기본적으로 model에 제미나이 모델명이 아닌 LiteLlm 클래스 변수를 넘기면 됨.
-# 모델 서비스 제공자 별로 알맞는 이름으로 환경변수 등록해야함.
+# 모델 서비스 제공자 별로 알맞는 이름으로 환경변수(API키 관련) 등록해야함.
 # 타모델의 경우 adk에서 제공하는 tool은 사용이 대체로 사용이 안되니 참고.
 # 앤스로픽 모델의 경우 별도 클래스가 제공되므로 클로드를 쓴다면 해당 클래스를 사용하는것도 고려.
 
@@ -20,6 +20,15 @@ root_agent = LlmAgent(
     # ... other agent parameters
 )
 
+# OpenAI 호환 모드로 서빙되는 모델 - vllm, xinference, LM Studio 등..
+oai_compatible_agent = LlmAgent(
+    # base_url 값으로 서빙되는 url을 넘기면 됨. 보통은 '/v1' 까지 포함해야함
+    model=LiteLlm(model="openai/gpt-5-mini-2025-08-07" , base_url="http://your_host_url.foo.bar/v1"), 
+    name="openai_agent",
+    instruction="You are a helpful assistant powered by GPT-5-mini. You are provided with google_search tool.",
+    tools=[add]
+    # ... other agent parameters
+)
 
 # 앤스로픽 클로드 계열
 agent_claude_direct = LlmAgent(
