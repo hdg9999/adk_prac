@@ -13,7 +13,7 @@ sub-agents=[a,b] 이고 max_iterations=2일때, \
 호출 순서는 a,b,a,b 임
 
 ## Parallel Agent
-sub-agents 인자로 넘긴 에이전트들을 병렬로 호출함. 에이전트별로 
+sub-agents 인자로 넘긴 에이전트들을 병렬로 호출함. sub_agents에 넘긴 에이전트 갯수만큼 브랜치가 생기는 개념.
 
 (플로우 예시) - sub_agents = [A,B,C] 인 경우
 ```mermaid 
